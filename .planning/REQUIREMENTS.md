@@ -94,31 +94,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REPO-01 | — | Pending |
-| REPO-02 | — | Pending |
-| REPO-03 | — | Pending |
-| REPO-04 | — | Pending |
-| REPO-05 | — | Pending |
-| PARS-01 | — | Pending |
-| PARS-02 | — | Pending |
-| PARS-03 | — | Pending |
-| PARS-04 | — | Pending |
-| AI-01 | — | Pending |
-| AI-02 | — | Pending |
-| AI-03 | — | Pending |
-| AI-04 | — | Pending |
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| ACCT-01 | — | Pending |
-| ACCT-02 | — | Pending |
+| REPO-01 | Phase 3 | Pending |
+| REPO-02 | Phase 3 | Pending |
+| REPO-03 | Phase 3 | Pending |
+| REPO-04 | Phase 3 | Pending |
+| REPO-05 | Phase 3 | Pending |
+| PARS-01 | Phase 2 | Pending |
+| PARS-02 | Phase 2 | Pending |
+| PARS-03 | Phase 2 | Pending |
+| PARS-04 | Phase 2 | Pending |
+| AI-01 | Phase 4 | Pending |
+| AI-02 | Phase 4 | Pending |
+| AI-03 | Phase 4 | Pending |
+| AI-04 | Phase 5 | Pending |
+| AUTH-01 | Phase 5 | Pending |
+| AUTH-02 | Phase 5 | Pending |
+| AUTH-03 | Phase 5 | Pending |
+| AUTH-04 | Phase 5 | Pending |
+| ACCT-01 | Phase 3 | Pending |
+| ACCT-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 19 total
-- Mapped to phases: 0
-- Unmapped: 19
+- Mapped to phases: 19
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-18*
-*Last updated: 2026-02-18 after initial definition*
+*Last updated: 2026-02-18 after roadmap creation*
