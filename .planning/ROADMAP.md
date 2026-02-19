@@ -29,13 +29,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A file uploaded via the API is stored in MinIO (not in a database column), retrievable with original bytes, and the in-memory `_store` is gone
   3. An async ingestion job skeleton accepts an uploaded file, enqueues it to Celery/Redis, and returns a job ID — even if the parse step is a stub
   4. A UPG structure catalog document exists, derived from manual annotation of 20+ real corpus files, describing section patterns, block delimiters, variable references, and library include syntax
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 01-01: Docker Compose dev environment with PostgreSQL + pgvector, Redis, MinIO, and Celery worker
-- [ ] 01-02: SQLite-to-PostgreSQL migration, eliminate `_store`, wire MinIO for raw file storage
-- [ ] 01-03: Async ingestion job skeleton (Celery task, job status polling endpoint, stub parse step)
-- [ ] 01-04: UPG corpus collection and structure catalog (manual annotation of 20+ real files from C:\CAM CONTENT)
+- [ ] 01-01-PLAN.md — Docker Compose dev environment (PostgreSQL+pgvector, Redis, MinIO, Celery worker) [Wave 1]
+- [ ] 01-02-PLAN.md — PostgreSQL migration, eliminate _store, wire MinIO for file storage [Wave 2]
+- [ ] 01-03-PLAN.md — Async ingestion skeleton (ZIP upload, Celery task, status polling) [Wave 3]
+- [ ] 01-04-PLAN.md — UPG corpus collection and structure catalog (20+ files, 3 controller types) [Wave 1]
 
 ### Phase 2: Parser Engine
 **Goal**: Engineers can upload real post processor packages and the system reliably extracts structured sections, variables, and cross-file references — making the corpus queryable and AI-ready
