@@ -1,36 +1,47 @@
-"""Post processor domain models."""
+"""Pydantic response schemas for post processor API.
+
+Aligned with SQLAlchemy ORM models in app.db.models.
+Uses from_attributes for direct ORM-to-response serialization.
+"""
 
 from datetime import datetime
-from pydantic import BaseModel, Field
+from uuid import UUID
+
+from pydantic import BaseModel
 
 
-class PostProcessorBase(BaseModel):
+class FileResponse(BaseModel):
+    """Response schema for a single file within a package."""
+
+    id: UUID
     filename: str
-    platform: str  # camworks | delmia | mastercam
+    file_extension: str
+    size_bytes: int | None = None
+
+    model_config = {"from_attributes": True}
+
+
+class PackageResponse(BaseModel):
+    """Response schema for a post processor package."""
+
+    id: UUID
+    name: str
     machine_type: str | None = None
-    controller: str | None = None
-    description: str | None = None
-
-
-class PostProcessorResponse(PostProcessorBase):
-    id: str
+    controller_type: str | None = None
+    platform: str
+    status: str
+    error_message: str | None = None
+    file_count: int | None = None
+    section_count: int | None = None
     created_at: datetime
     updated_at: datetime
-    section_count: int = 0
-    status: str = "uploaded"  # uploaded | parsed | validated | error
+    files: list[FileResponse] = []
+
+    model_config = {"from_attributes": True}
 
 
-class PostProcessorListResponse(BaseModel):
-    posts: list[PostProcessorResponse]
+class PackageListResponse(BaseModel):
+    """Response schema for listing packages."""
+
+    packages: list[PackageResponse]
     count: int
-
-
-class ParsedPost(BaseModel):
-    """Result of parsing a post processor file."""
-
-    post_id: str
-    raw_content: str
-    summary: str = ""
-    section_names: list[str] = Field(default_factory=list)
-    variables: dict[str, str] = Field(default_factory=dict)
-    errors: list[str] = Field(default_factory=list)

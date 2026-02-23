@@ -1,7 +1,6 @@
 """Application configuration loaded from environment variables."""
 
 from functools import lru_cache
-from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -35,9 +34,6 @@ class Settings(BaseSettings):
     # Celery (async task queue)
     celery_broker_url: str = "redis://redis:6379/0"
     celery_result_backend: str = "redis://redis:6379/0"
-
-    # Corpus
-    corpus_dir: Path = Path("./corpus")
 
     # Logging
     log_level: str = "INFO"

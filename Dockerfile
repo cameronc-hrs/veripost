@@ -15,6 +15,10 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 COPY pyproject.toml .
 RUN pip install --no-cache-dir .
 
+# Copy Alembic migration config and scripts
+COPY alembic.ini .
+COPY alembic/ alembic/
+
 # Copy application code
 COPY app/ app/
 

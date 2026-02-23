@@ -1,7 +1,7 @@
 """Database setup and session management.
 
-Uses SQLAlchemy async with aiosqlite for development.
-Swap to PostgreSQL for production by changing DATABASE_URL.
+Uses SQLAlchemy async with asyncpg for PostgreSQL.
+Connection pooling configured for containerized deployment.
 """
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -15,12 +15,17 @@ class Base(DeclarativeBase):
 
 
 settings = get_settings()
-engine = create_async_engine(settings.database_url, echo=settings.is_dev)
+engine = create_async_engine(
+    settings.database_url,
+    echo=settings.is_dev,
+    pool_size=5,
+    max_overflow=10,
+)
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 
 async def init_db() -> None:
-    """Create all tables."""
+    """Create all tables (used for testing; Alembic handles production migrations)."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
