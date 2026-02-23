@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-18)
 ## Current Position
 
 Phase: 1 of 5 (Foundation)
-Plan: 2 of 4 in current phase
-Status: Executing -- Plans 01-01 and 01-02 complete, Wave 1 01-04 still blocked (corpus download)
-Last activity: 2026-02-23 -- Plan 01-02 (PostgreSQL + MinIO persistence) completed
+Plan: 3 of 4 in current phase
+Status: Executing -- Plans 01-01, 01-02, and 01-03 complete. Plan 01-04 still blocked (corpus download).
+Last activity: 2026-02-23 -- Plan 01-03 (async ingestion pipeline) completed
 
-Progress: [███░░░░░░░] 10%
+Progress: [████░░░░░░] 15%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 8 min
-- Total execution time: 0.27 hours
+- Total plans completed: 3
+- Average duration: 32 min
+- Total execution time: 1.62 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 2 | 16 min | 8 min |
+| 01-foundation | 3 | 97 min | 32 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8 min), 01-02 (8 min)
-- Trend: Steady at 8 min/plan
+- Last 5 plans: 01-01 (8 min), 01-02 (8 min), 01-03 (81 min)
+- Trend: 01-03 longer due to full Docker build/test cycle with Celery + MinIO integration
 
 *Updated after each plan completion*
 
@@ -52,6 +52,10 @@ Recent decisions affecting current work:
 - [01-02]: Eager-load files relationship on all package queries to avoid async lazy-load issues
 - [01-02]: Parsing endpoint returns 501 stub until Phase 2 parser is real
 - [01-02]: Single-file upload as placeholder; ZIP upload deferred to Plan 01-03
+- [01-03]: Celery tasks use synchronous psycopg2 + boto3 (not async) since Celery workers are synchronous
+- [01-03]: Package name derived from first .SRC filename in uploaded ZIP
+- [01-03]: Nested ZIP directories flattened to filename-only (handles Windows zip behavior)
+- [01-03]: ErrorResponse model established as platform-wide error pattern (friendly message + expandable detail)
 
 ### Pending Todos
 
@@ -67,12 +71,13 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-23
-Stopped at: Completed 01-02-PLAN.md (PostgreSQL + MinIO persistence) -- ready for Plan 01-03
-Resume with: `/gsd:execute-phase 1` -- will start Plan 01-03 (async ingestion pipeline)
+Stopped at: Completed 01-03-PLAN.md (async ingestion pipeline) -- only Plan 01-04 remains in Phase 1
+Resume with: `/gsd:execute-phase 1` -- will attempt Plan 01-04 (UPG corpus, still blocked on SharePoint download)
 
 ### Completed Plans
 - **01-01 (Docker Compose):** Complete. 5-service stack verified running. Commit `1543708`.
 - **01-02 (PostgreSQL + MinIO):** Complete. SQLAlchemy ORM, Alembic migration, MinIO storage, API rewrite. Commits `7cd05f5`, `97b33f2`.
+- **01-03 (Async Ingestion):** Complete. Celery task, ZIP upload, status polling, UPG validation. Commits `763b047`, `aef0a8d`.
 
 ### Remaining Checkpoints
 
@@ -83,6 +88,6 @@ Resume with: `/gsd:execute-phase 1` -- will start Plan 01-03 (async ingestion pi
 - After checkpoint: Agent scans corpus and produces UPG-STRUCTURE-CATALOG.md
 
 ### Execution Order Remaining
-Wave 3 (01-03: async ingestion pipeline) --> Wave 1 (01-04: still blocked on corpus) --> Phase verification
+Plan 01-04 (blocked on corpus) --> Phase 1 verification
 
-Note: Plan 01-03 depends on 01-01 and 01-02 (both complete). Plan 01-04 is Wave 1 but independent -- can proceed with 01-03 while 01-04 awaits corpus files.
+Note: 3 of 4 plans complete. Phase 1 cannot be fully closed until 01-04 corpus collection is done.

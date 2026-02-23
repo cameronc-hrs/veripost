@@ -32,9 +32,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 01-01-PLAN.md — Docker Compose dev environment (PostgreSQL+pgvector, Redis, MinIO, Celery worker) [Wave 1]
-- [ ] 01-02-PLAN.md — PostgreSQL migration, eliminate _store, wire MinIO for file storage [Wave 2]
-- [ ] 01-03-PLAN.md — Async ingestion skeleton (ZIP upload, Celery task, status polling) [Wave 3]
+- [x] 01-01-PLAN.md — Docker Compose dev environment (PostgreSQL+pgvector, Redis, MinIO, Celery worker) [Wave 1]
+- [x] 01-02-PLAN.md — PostgreSQL migration, eliminate _store, wire MinIO for file storage [Wave 2]
+- [x] 01-03-PLAN.md — Async ingestion skeleton (ZIP upload, Celery task, status polling) [Wave 3]
 - [ ] 01-04-PLAN.md — UPG corpus collection and structure catalog (20+ files, 3 controller types) [Wave 1]
 
 ### Phase 2: Parser Engine
@@ -112,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/4 | Not started | - |
+| 1. Foundation | 3/4 | In progress | - |
 | 2. Parser Engine | 0/4 | Not started | - |
 | 3. Post Repository | 0/4 | Not started | - |
 | 4. AI Copilot Core | 0/3 | Not started | - |
