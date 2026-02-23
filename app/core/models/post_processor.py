@@ -45,3 +45,22 @@ class PackageListResponse(BaseModel):
 
     packages: list[PackageResponse]
     count: int
+
+
+class ErrorResponse(BaseModel):
+    """Platform-wide error response: friendly message + expandable detail."""
+
+    message: str
+    detail: str | None = None
+    code: str | None = None
+
+
+class StatusResponse(BaseModel):
+    """Response schema for package ingestion status polling."""
+
+    package_id: str
+    status: str
+    error_message: str | None = None
+    error_detail: str | None = None
+    file_count: int | None = None
+    section_count: int | None = None
