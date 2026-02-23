@@ -19,8 +19,22 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     ai_model: str = "claude-sonnet-4-20250514"
 
-    # Database
-    database_url: str = "sqlite+aiosqlite:///./veripost.db"
+    # Database (PostgreSQL + asyncpg)
+    database_url: str = "postgresql+asyncpg://veripost:veripost@postgres:5432/veripost"
+
+    # Redis
+    redis_url: str = "redis://redis:6379/0"
+
+    # MinIO (S3-compatible object storage)
+    minio_endpoint: str = "minio:9000"
+    minio_access_key: str = "veripost"
+    minio_secret_key: str = "veripost123"
+    minio_bucket: str = "veripost"
+    minio_use_ssl: bool = False
+
+    # Celery (async task queue)
+    celery_broker_url: str = "redis://redis:6379/0"
+    celery_result_backend: str = "redis://redis:6379/0"
 
     # Corpus
     corpus_dir: Path = Path("./corpus")

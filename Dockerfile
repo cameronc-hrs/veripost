@@ -1,13 +1,22 @@
 FROM python:3.11-slim
 
+# Install system dependencies for asyncpg (PostgreSQL client library)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Install dependencies
+# Upgrade pip for reliable dependency resolution
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Copy dependency manifest first for layer caching
 COPY pyproject.toml .
 RUN pip install --no-cache-dir .
 
-# Copy application
-COPY . .
+# Copy application code
+COPY app/ app/
 
 EXPOSE 8000
 
