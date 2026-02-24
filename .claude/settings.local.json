@@ -10,7 +10,28 @@
       "Bash(git stash:*)",
       "Bash(git stash pop:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git branch:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(cmd //c \"dir \"\"C:\\\\CAM CONTENT\"\" /b\")",
+      "Skill(gsd:new-project)",
+      "Skill(gsd:new-project:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python:*)",
+      "Bash(docker --version:*)",
+      "Bash(docker compose:*)",
+      "Bash(curl:*)",
+      "Bash(docker volume ls:*)",
+      "Bash([ -f \"app/db/models.py\" ])",
+      "Bash([ -f \"app/services/storage.py\" ])",
+      "Bash([ -f \"app/api/routes/packages.py\" ])",
+      "Bash([ -f \"alembic.ini\" ])",
+      "Bash([ -f \"alembic/env.py\" ])",
+      "Bash([ -f \"alembic/script.mako\" ])",
+      "Bash([ -f \"alembic/versions/001_initial_schema.py\" ])",
+      "Bash([ -f \".planning/phases/01-foundation/01-02-SUMMARY.md\" ])"
     ]
   }
 }
